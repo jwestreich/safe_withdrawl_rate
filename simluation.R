@@ -7,8 +7,8 @@ library(timeDate)
 library(readr)
 
 folder_path<-"C:/Users/jwest/github/safe_withdrawl_rate/simluation_results/"
-trial_count<-10
-trial_size<-10
+trial_count<-100
+trial_size<-100
 withdrawl_rate<-.04
 starting_value<-1000000
 inflation<-0
