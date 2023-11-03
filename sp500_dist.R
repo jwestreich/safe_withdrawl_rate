@@ -83,3 +83,72 @@ summary_table <- sp_500_all %>%
 
 dist_table<-kable(summary_table, format = "html", caption = "<span style='color:black;'>Summary Statistics of S&P 500 Daily Growth Rates</span>") %>%
   kable_styling()
+
+
+
+
+
+
+example_simulations<-data.frame()
+getSymbols("^GSPC", from = "1946-01-01")
+sp500 <- as_tibble(Cl(GSPC), rownames = "Date")
+
+
+
+for(j in 1:10) {
+  sp_500_dist<-sp500%>%
+    mutate(daily_growth=GSPC.Close/lag(GSPC.Close))%>%
+    mutate(rand=runif(n()))%>%
+    arrange(rand)%>%
+    mutate(seqnum=row_number())%>%
+    select(daily_growth,seqnum)%>%
+    filter(!is.na(daily_growth))
+  dist_max <- nrow(sp_500_dist)
+  
+  federal_holidays <- as.Date(holidayNYSE(2022:2073))
+  all_dates <- seq(Sys.Date() + 1, Sys.Date() + 1 + years(50), by = "days")
+  weekdays_only <- all_dates[!weekdays(all_dates) %in% c("Saturday", "Sunday")]
+  weekdays_no_holidays <- weekdays_only[!weekdays_only %in% federal_holidays]
+  weekdays <- data.frame(date = as.POSIXct(weekdays_no_holidays))
+  
+  future<-weekdays%>%
+    mutate(seqnum = sample(1:dist_max, n(), replace = TRUE))%>%
+    left_join(sp_500_dist, by=c("seqnum"))%>%
+    mutate(daily_growth=ifelse(is.na(daily_growth),1,daily_growth))%>%
+    mutate(value = if_else(row_number() == 1, 1, NA_real_))
+  
+  for(i in 2:nrow(future)) {
+   future$value[i]=future$value[i-1]*future$daily_growth[i]
+  }
+
+  future<-future%>%mutate(sim=j)
+  example_simulations=rbind(example_simulations,future)
+  print(j)
+}
+
+example_sim_graph<-example_simulations%>%
+  mutate(sim=as.factor(sim))%>%
+  group_by(sim)%>%
+  mutate(year=row_number()/252)
+
+#figure out how to add in line of 7% annual growth, which should be 1.000269594 daily growth
+ggplot(example_sim_graph %>% filter(value <= 50), aes(x = year, y = value, color = sim)) +
+  geom_line() +
+  scale_color_manual(values = c("red", "orange", "gold", "green", "blue", "purple", "gray", "brown", "cyan", "black"))+
+  labs(x = "Year", y = "Growth Rate")+
+  theme_classic()+
+  guides(color = FALSE)
+ggplot(example_sim_graph %>% filter(year <= 30 & value <= 25), aes(x = year, y = value, color = sim)) +
+  geom_line() +
+  scale_color_manual(values = c("red", "orange", "gold", "green", "blue", "purple", "gray", "brown", "cyan", "black"))+
+  labs(x = "Year", y = "Growth Rate") +
+  theme_classic() +
+  guides(color = FALSE)+
+  scale_x_continuous(breaks = seq(0, 30, by = 5))
+ggplot(example_sim_graph %>% filter(year <= 10), aes(x = year, y = value, color = sim)) +
+  geom_line() +
+  scale_color_manual(values = c("red", "orange", "gold", "green", "blue", "purple", "gray", "brown", "cyan", "black"))+
+  labs(x = "Year", y = "Growth Rate") +
+  theme_classic() +
+  guides(color = FALSE)+
+  scale_x_continuous(breaks = seq(0, 10, by = 1))
