@@ -93,8 +93,6 @@ example_simulations<-data.frame()
 getSymbols("^GSPC", from = "1946-01-01")
 sp500 <- as_tibble(Cl(GSPC), rownames = "Date")
 
-
-
 for(j in 1:10) {
   sp_500_dist<-sp500%>%
     mutate(daily_growth=GSPC.Close/lag(GSPC.Close))%>%
@@ -126,29 +124,45 @@ for(j in 1:10) {
   print(j)
 }
 
+growth_7<-example_simulations%>%
+  filter(sim==1)%>%
+  mutate(sim=0)%>%
+  mutate(sim=as.factor(sim))%>%
+  mutate(year=row_number()/252)%>%
+  mutate(value=ifelse(row_number()>1,NA,value))
+growth_7$value <- cumprod(c(growth_7$value[1], rep(1.000269594, nrow(growth_7) - 1)))
+
 example_sim_graph<-example_simulations%>%
   mutate(sim=as.factor(sim))%>%
   group_by(sim)%>%
-  mutate(year=row_number()/252)
+  mutate(year=row_number()/252)%>%
+  rbind(growth_7)
 
-#figure out how to add in line of 7% annual growth, which should be 1.000269594 daily growth
-ggplot(example_sim_graph %>% filter(value <= 50), aes(x = year, y = value, color = sim)) +
+example_50yr<-ggplot(example_sim_graph %>% filter(value <= 50), aes(x = year, y = value, color = sim)) +
   geom_line() +
-  scale_color_manual(values = c("red", "orange", "gold", "green", "blue", "purple", "gray", "brown", "cyan", "black"))+
+  scale_color_manual(values = c("red", "orange", "gold", "green", "darkgreen", "blue", "purple", "gray", "brown", "cyan", "black"))+
   labs(x = "Year", y = "Growth Rate")+
+  ggtitle("Examples of Simulated S&P 500 Growth\n50 Year View") +
   theme_classic()+
   guides(color = FALSE)
-ggplot(example_sim_graph %>% filter(year <= 30 & value <= 25), aes(x = year, y = value, color = sim)) +
+#ggsave(paste0(folder_path,"example_50yr.png"), plot = example_50yr)
+
+example_30yr<-ggplot(example_sim_graph %>% filter(year <= 30 & value <= 25), aes(x = year, y = value, color = sim)) +
   geom_line() +
-  scale_color_manual(values = c("red", "orange", "gold", "green", "blue", "purple", "gray", "brown", "cyan", "black"))+
+  scale_color_manual(values = c("red", "orange", "gold", "green", "darkgreen", "blue", "purple", "gray", "brown", "cyan", "black"))+
   labs(x = "Year", y = "Growth Rate") +
+  ggtitle("Examples of Simulated S&P 500 Growth\n30 Year View") +
   theme_classic() +
   guides(color = FALSE)+
   scale_x_continuous(breaks = seq(0, 30, by = 5))
-ggplot(example_sim_graph %>% filter(year <= 10), aes(x = year, y = value, color = sim)) +
+#ggsave(paste0(folder_path,"example_30yr.png"), plot = example_30yr)
+
+example_10yr<-ggplot(example_sim_graph %>% filter(year <= 10), aes(x = year, y = value, color = sim)) +
   geom_line() +
-  scale_color_manual(values = c("red", "orange", "gold", "green", "blue", "purple", "gray", "brown", "cyan", "black"))+
+  scale_color_manual(values = c("red", "orange", "gold", "green", "darkgreen", "blue", "purple", "gray", "brown", "cyan", "black"))+
   labs(x = "Year", y = "Growth Rate") +
+  ggtitle("Examples of Simulated S&P 500 Growth\n10 Year View") +
   theme_classic() +
   guides(color = FALSE)+
   scale_x_continuous(breaks = seq(0, 10, by = 1))
+#ggsave(paste0(folder_path,"example_10yr.png"), plot = example_10yr)
