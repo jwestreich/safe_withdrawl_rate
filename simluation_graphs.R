@@ -44,7 +44,7 @@ ggplot(training_data, aes(x = retirement_length, y = success_prob, color = `Star
   geom_line(size=1.2) +
   geom_vline(aes(xintercept = 30), color = "black", size = .5) +
   labs(x = "Length of Retirement", y = "Confidence of Success")+
-  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(0, 100.1), breaks = seq(0, 100, by = 10), expand = c(0,0))+
+  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(50, 100.1), breaks = seq(50, 100, by = 10), expand = c(0,0))+
   scale_x_continuous(limits = c(0, 50), breaks = seq(0, 50, by = 5), expand = c(0,0))+
   scale_color_manual(values = c("red", "#00BA38", "blue")) +
   ggtitle("Confidence of Success of 4% Rule\nby Different Training Periods\n") +
@@ -54,6 +54,7 @@ ggplot(training_data, aes(x = retirement_length, y = success_prob, color = `Star
         panel.grid.major = element_line(color = "gray"),
         panel.grid.minor = element_line(color = "gray"),
         legend.title = element_text(hjust = 0.5))
+#ggsave(paste0(folder_path,"example_30yr.png"), plot = example_30yr)
 
 withdrawl_data<-data%>%
   filter(training==1946 & inflation==0)%>%
@@ -63,7 +64,7 @@ ggplot(withdrawl_data, aes(x = retirement_length, y = success_prob, color = `Wit
   geom_line(size=1.2) +
   geom_vline(aes(xintercept = 30), color = "black", size = .5) +
   labs(x = "Length of Retirement", y = "Confidence of Success")+
-  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(0, 100.1), breaks = seq(0, 100, by = 10), expand = c(0,0))+
+  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(50, 100.1), breaks = seq(50, 100, by = 10), expand = c(0,0))+
   scale_x_continuous(limits = c(0, 50), breaks = seq(0, 50, by = 5), expand = c(0,0))+
   scale_color_manual(values = c("red", "blue", "#00BA38")) +
   ggtitle("Confidence of Success of Withdrawl Rule\nby Different Withdrawl Rates\n") +
@@ -82,7 +83,7 @@ ggplot(inflation_w3_data, aes(x = retirement_length, y = success_prob, linetype 
   geom_line(color="#00BA38", size = 1.2) +
   geom_vline(aes(xintercept = 30), color = "black", size = .5) +
   labs(x = "Length of Retirement", y = "Confidence of Success") +
-  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(0, 100.1), breaks = seq(0, 100, by = 10), expand = c(0, 0)) +
+  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(50, 100.1), breaks = seq(50, 100, by = 10), expand = c(0, 0)) +
   scale_x_continuous(limits = c(0, 50), breaks = seq(0, 50, by = 5), expand = c(0, 0)) +
   scale_linetype_manual(values = c("dashed", "solid")) +
   ggtitle("Confidence of Success of 3% Withdrawal Rule\nFactoring Inflation\n") +
@@ -102,7 +103,7 @@ ggplot(inflation_w4_data, aes(x = retirement_length, y = success_prob, linetype 
   geom_line(color="blue", size = 1.2) +
   geom_vline(aes(xintercept = 30), color = "black", size = .5) +
   labs(x = "Length of Retirement", y = "Confidence of Success") +
-  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(0, 100.1), breaks = seq(0, 100, by = 10), expand = c(0, 0)) +
+  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(50, 100.1), breaks = seq(50, 100, by = 10), expand = c(0, 0)) +
   scale_x_continuous(limits = c(0, 50), breaks = seq(0, 50, by = 5), expand = c(0, 0)) +
   scale_linetype_manual(values = c("dashed", "solid")) +
   ggtitle("Confidence of Success of 4% Withdrawal Rule\nFactoring Inflation\n") +
@@ -122,7 +123,7 @@ ggplot(inflation_w5_data, aes(x = retirement_length, y = success_prob, linetype 
   geom_line(color="red", size = 1.2) +
   geom_vline(aes(xintercept = 30), color = "black", size = .5) +
   labs(x = "Length of Retirement", y = "Confidence of Success") +
-  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(0, 100.1), breaks = seq(0, 100, by = 10), expand = c(0, 0)) +
+  scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(50, 100.1), breaks = seq(50, 100, by = 10), expand = c(0, 0)) +
   scale_x_continuous(limits = c(0, 50), breaks = seq(0, 50, by = 5), expand = c(0, 0)) +
   scale_linetype_manual(values = c("dashed", "solid")) +
   ggtitle("Confidence of Success of 5% Withdrawal Rule\nFactoring Inflation\n") +
