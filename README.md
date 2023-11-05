@@ -10,7 +10,7 @@ Let's define what measure of the stock market we're going to use. Most Americans
 
 The daily closing value of the S&P 500 can be imported into R. This is where we can use the past to inform our forecast of the future. Every day, the value of the S&P 500 moves by a measurable amount. Usually, the daily change is very small. I calculated the daily change of every day since the end of 1927 to fall of 2023. This was used to create a distribution of daily changes of the market. The histogram shows that most of the daily changes are right around 0 (note: the histogram shows the distribution from 1946-2023; more on that in the results section). Anything greater than a 3% change (positive or negative) in a single day is very rare. 
 
-![](/safe_withdrawl_rate/blob/main/sp500_dist_graphs/hist_1946.png)
+![]([/safe_withdrawl_rate/blob/main/sp500_dist_graphs/hist_1946.png](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/sp500_dist_graphs/hist_1946.png))
 
 ## Results
 
