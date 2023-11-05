@@ -32,6 +32,12 @@ For those wanting to be more precise with this, here is a table showing differen
 
 ![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/sp500_dist_graphs/dist_table.png)
 
+However, when running the simulation of the 4% withdrawl rule, assuming no inflation, there are noticeable differences. This graph shows that using training data from 1927 puts the probability of a successful 30-year retirement at about 83% (5 out of 6 times), while training data from 1946 puts the probability of a successful 30-year retirement at close to 95% (19 out of 20 times). My hypothesis for why 1927 does so poorly is because the years of the Great Depression must have dragged down the market in the simulation. 1970 likely does slightly worse than 1946 because it is not informed by strong market conditions in the 1950s and 1960s. 
+
+![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/training.png)
+
+In order to give the 4% withdrawl rule the best shot of being a sound retirement strategy, this analysis will only use training data from 1946-2023 going forward.
+
 ## Results
 
 
