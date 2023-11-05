@@ -19,13 +19,18 @@ With all these daily changes, I assigned each day a random integer from 1 to the
 ![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/sp500_dist_graphs/example_50yr.png)
 
 ### Simulating a Retirement
-Now we can run a simulation. Let's assume a person has some random amount of money (we can just use 1 million dollars to keep things simple, the amount won't matter). All of that money is invested in the S&P 500, and every day the value of their savings will change based on the forecasted market. The only other time the value changes is on the first of each month, when they withdraw one twelfth of 4% of the amount they started at ($3,333.33 for our simulated one million dollars). We can also adjust the withdrawl amount with inflation. As long as the value stays above zero dollars, the retiree is successfully using the withdrawl rate rule. If the value ever drops to below zero dollars, the retiree is not successfully using the withdrawl rate rule.
+Now we can run a simulation. Let's assume a person has some random amount of money (we can just use 1 million dollars to keep things simple, the amount won't matter). All of that money is invested in the S&P 500, and every day the value of their savings will change based on the forecasted market. The only other time the value changes is on the first of each month, when they withdraw one twelfth of 4% of the amount they started at ($3,333.33 for our simulated one million dollars). We can also adjust the withdrawl amount with inflation. As long as the value stays above zero dollars, the retiree is successfully using the withdrawl rate rule. If the value ever drops to below zero dollars, the retiree is not successfully using the withdrawl rate rule. To get a probability of how successful using a withdrawl rate can be over time, each simulation is run 10,000 times.
 
-There are three parameters that can be changed in the simluation: 1) the withdrawl rate can be changed, this analysis will show what a 3%, 4%, and 5% withdrawl rate will look like; 2) the inflation rate can be changed; this analysis will show what 0% and 2% inflation will look like; and 3) the time period of training data used to simulate 
-
-To get a good picture of the probability, for each
+There are three parameters that can be changed in the simluation: 1) the withdrawl rate can be changed, this analysis will show what a 3%, 4%, and 5% withdrawl rate will look like; 2) the inflation rate can be changed; this analysis will show what 0% and 2% inflation will look like; and 3) the time period of training data used to generate the distribution of daily changes in the market; this analysis will show what using 1927-2023, 1946-2023, and 1970-2023 as training data periods would look like.
 
 ### Different Training Data Periods
+Before diving into the results in full, let's make things simpler by choosing just one time period to using training data. The three options selected are 1927-2023 (because this is the most data), 1946-2023 (because this excludes volatility from the Great Depression and WWII), and 1970-2023 (assuming that more recent decades of market trends will be more informative of the future than decades further back in the past). At first glance, it did not appear that shifting the training data period would have a large effect on the results. This box plot shows the distribution of the annual growth from three time periods.
+
+![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/sp500_dist_graphs/boxplot.png)
+
+For those wanting to be more precise with this, here is a table showing different points in each distrutions daily growth rates.
+
+![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/sp500_dist_graphs/dist_table.png)
 
 ## Results
 
