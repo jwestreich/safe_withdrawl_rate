@@ -45,7 +45,13 @@ In order to give the 4% withdrawl rule the best shot of being a sound retirement
 ### Different Withdrawl Rates
 
 
+![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/withdrawl.png)
+
 ### Bringing in Inflation
 
+![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/inflation3.png)
+![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/inflation4.png)
+![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/inflation5.png)
 
 ## Conclusion
+3% rule, sorry.
