@@ -67,7 +67,7 @@ withdrawl<-ggplot(withdrawl_data, aes(x = retirement_length, y = success_prob, c
   labs(x = "Length of Retirement", y = "Confidence of Success")+
   scale_y_continuous(labels = scales::percent_format(scale = 1), limits = c(50, 100.1), breaks = seq(50, 100, by = 10), expand = c(0,0))+
   scale_x_continuous(limits = c(0, 50), breaks = seq(0, 50, by = 5), expand = c(0,0))+
-  scale_color_manual(values = c("red", "blue", "#00BA38")) +
+  scale_color_manual(values = c("#00BA38", "blue", "red")) +
   ggtitle("Confidence of Success of Withdrawl Rule\nby Different Withdrawl Rates\n") +
   theme_minimal(base_rect_size = 0.5) +
   theme(plot.title = element_text(hjust = 0.5),
