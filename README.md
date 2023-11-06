@@ -44,8 +44,11 @@ In order to give the 4% withdrawl rule the best shot of being a sound retirement
 
 ### Different Withdrawl Rates
 
+First, let's look at the results of the withdrawl rates, using training data form 1946-2023 and assuming no inflation. As we would expect, the safest withdrawl rate of 3% has the highest chance of probability at any point in a 50-year retirement, followed by the 4% withdrawl rate, and then the 5% withdrawl rate. The graph bolds the line at a 30-year retirement, so it's easy to see the probability of making a 30-year retirement work for each of these withdrawl rates. The 3% withdrawl rate has almost a 99% chance of lasting at least 30 years (failing 1 out of 100 times), the 4% withdrawl rate has just shy of a 95% chance of lasting at least 30 years (failing 1 out of 20 times), and the 5% withdrawl rate has about an 85% chance of lasting at least 30 years (failing 1 out of every 6 or 7 times).
 
 ![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/withdrawl.png)
+
+So far, this analysis bodes well for the 4% withdrawl rule. Even though it is not a guarantee that this withdrawl rate will last 30 years, neither is the more conservative withdrawl rate of 3%. The only way to really *guarantee* to not run out of money is to never spend more than you make. If the stock market can't provide guaranteed returns, there may be times to spend more than you make. If the market downturn happens for too long, a retirement can fail at any time. A 95% chance of success lends itself well to a comparison of statistical signifcance testing. In statistical testing, a relationship is found to be "[statistically significant](https://en.wikipedia.org/wiki/P-value)" if there is at least a 95% probability that the relationship did not happen by random chance. 
 
 ### Bringing in Inflation
 
