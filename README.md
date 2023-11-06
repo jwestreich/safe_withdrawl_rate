@@ -48,9 +48,16 @@ First, let's look at the results of the withdrawl rates, using training data for
 
 ![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/withdrawl.png)
 
-So far, this analysis bodes well for the 4% withdrawl rule. Even though it is not a guarantee that this withdrawl rate will last 30 years, neither is the more conservative withdrawl rate of 3%. The only way to really *guarantee* to not run out of money is to never spend more than you make. If the stock market can't provide guaranteed returns, there may be times to spend more than you make. If the market downturn happens for too long, a retirement can fail at any time. A 95% chance of success lends itself well to a comparison of statistical signifcance testing. In statistical testing, a relationship is found to be "[statistically significant](https://en.wikipedia.org/wiki/P-value)" if there is at least a 95% probability that the relationship did not happen by random chance. 
+So far, this analysis bodes well for the 4% withdrawl rule. Even though it is not a guarantee that this withdrawl rate will last 30 years, neither is the more conservative withdrawl rate of 3%. The only way to really *guarantee* to not run out of money is to never spend more than you make. If the stock market can't provide guaranteed returns, there may be times to spend more than you make. If the market downturn happens for too long, a retirement can fail at any time. A 95% chance of success lends itself well to a comparison of statistical signifcance testing. In statistical testing, a relationship is found to be "[statistically significant](https://en.wikipedia.org/wiki/P-value)" if there is at least a 95% probability that the relationship did not happen by random chance. If the 4% withdrawl rule can hit that ever-sought-after 95% confidence, it's good enough for me.
 
 ### Bringing in Inflation
+
+The problem with the above results were that they did not take into account the effect of inflation. Inflation has different and nuanced effects on the growth of the market. I'm going to assume that by capturing periods of both high and low inflation in the training data, I won't need to worry about this affect on how market growth was simulated. However, the amount withdrawn each month by the retiree will need to be adjusted.
+
+In the first simulations, it was assumed that the retiree would calculate 4% of their savings, and withdraw one twelfth of that every month. If the cost of living went up by 10% one year, the amount withdrawn would stay constant. This isn't very realistic.
+
+To compensate for that, I reran the simulations, this time adjusting the amount withdrawn each year. Now, instead of a constant amount, each year, the amount increases by 2% ([the Federal Reserve's target inflation rate](https://www.federalreserve.gov/faqs/economy_14400.htm)). If the retiree starts with one million dollars, they can withdraw ($1,000,000 * 4% withdrawl / 12 month) = $3,333 each month. In the next year, they can withdraw ($3,333 + ($3,333 * 2%)) = $3,400. This will go on until they run out of money. After 30 years, the monthly withdrawl amount would have gone from $3,333 to $6,037, nearly doubling. This will make having a successful retirement harder as time goes on.
+
 
 ![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/inflation3.png)
 ![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/inflation4.png)
