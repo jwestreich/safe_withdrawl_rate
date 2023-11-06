@@ -70,5 +70,12 @@ The story is even worse for the 5% rule: with inflation, only a 68% chance of su
 
 ![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/inflation5.png)
 
+## Limitations
+Here are some limiations of this analysis:
+
+* Only using S&P 500 growth to predict growth of retirement savings, forgetting about target retirement funds and bonds, which may be safer investments
+* Assuming a constant 2% rate of inflation, instead of trying to probabilistically forecast inflation in a similar fashion to forecasting market growth
+* Not taking into account the possibility of Social Security income or other types of income during retirement
+
 ## Conclusion
-3% rule, sorry.
+
