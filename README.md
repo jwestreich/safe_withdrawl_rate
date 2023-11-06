@@ -79,3 +79,9 @@ Here are some limiations of this analysis:
 
 ## Conclusion
 
+While there are certainly some limitations to this first version of analysis, the results seem reasonable enough to justify using a probabilistic analysis to complement the already done deterministic analysis. Other recent financial analysts have indicated that the 4% rule may be outdated, with one analysis by [Morningstar](https://www.cnbc.com/2021/11/11/the-4percent-rule-a-popular-retirement-income-strategy-may-be-outdated.html) in particular advocating for a 3.3% withdrawl rule (which is pretty close to what this analysis concluded).
+
+My goal with this analysis was to expand the methods used to evaluate the usefulness of the 4% rule, and help inform people how much money they may need to retire. While I may have talked about 30-year retirements in this write-up because that is a conventional "standard" retirement length, I've stretched the visuals out to 50 years. If someone is looking at an early retirement (if you're reading a GitHub README file about the 4% rule, you probably are), 30 years may not be enough. Hopefully the information here is enough to provide results to make a more informed decision about the right time to retire.
+
+Again, this is only the start. I hope to continue this analysis to bridge some of the gaps created by the limitations. For now, here is my final, affirmative conclusion:
+**If your entire retirement savings are in the S&P 500, you withdraw 3% of that starting amount per year, increasing the amount by 2% each year, there is a 95% chance that your retirement will last at least 30 years.**
