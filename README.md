@@ -58,9 +58,16 @@ In the first simulations, it was assumed that the retiree would calculate 4% of 
 
 To compensate for that, I reran the simulations, this time adjusting the amount withdrawn each year. Now, instead of a constant amount, each year, the amount increases by 2% ([the Federal Reserve's target inflation rate](https://www.federalreserve.gov/faqs/economy_14400.htm)). If the retiree starts with one million dollars, they can withdraw ($1,000,000 * 4% withdrawl / 12 month) = $3,333 each month. In the next year, they can withdraw ($3,333 + ($3,333 * 2%)) = $3,400. This will go on until they run out of money. After 30 years, the monthly withdrawl amount would have gone from $3,333 to $6,037, nearly doubling. This will make having a successful retirement harder as time goes on.
 
+The 3% rule is exactly where we want it to be. The 30-year mark is right at 95% chance of success, even after taking into account inflation. Increasing inflation from 0% to 2% brought the chance of success at 30 years down by 4 percentage points. We can also see that this shift is not parallel: in the first 15 years of retirement, there is almost no shift at all; the shift grows to 4 points by 30 years, and then hits about 10 points at 50 years. This is because the 2% inflation rate has a compounding effect. A 2% increase won't seem like much in the beginning, but over time, even that small rate can start to really add up.
 
 ![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/inflation3.png)
+
+The shift is more dramatic for the 4% withdrawl rate. At 30 years, the chance of success moves from 95% with no inflation to less than 85% with 2% inflation. This means that applying the 4% rule, under these conditions, will result in a retirement that lasts 30 years about five in six times.
+
 ![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/inflation4.png)
+
+The story is even worse for the 5% rule: with inflation, only a 68% chance of success. If you tried using the 5% withdrawl rule, assuming constant 2% inflation, you would only be able to last 30 years about two out of three times. If you wanted to stretch it out to 50 years, it's about 50-50.
+
 ![](https://github.com/jwestreich/safe_withdrawl_rate/blob/main/simulation_graphs/inflation5.png)
 
 ## Conclusion
